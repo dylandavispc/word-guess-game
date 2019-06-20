@@ -15,7 +15,9 @@ document.getElementById("guesses-left").innerHTML = guessesLeft;
 
 // This variable will count the number of times we won
 var wins = 0;
+var losses = 0;
 document.getElementById("wins").innerHTML = wins;
+document.getElementById("losses").innerHTML = losses;
 
 var resetLettersGuessed = ""
 
@@ -94,7 +96,10 @@ document.onkeyup = function (event) {
     // their win streak, then it will reset the game while quickly showing
     // what the word was
     if (guessesLeft === 0) {
+        losses++;
+        document.getElementById("losses").innerHTML = losses;
         alert("Game Over! You finished with a streak of " + wins + " wins! The word was " + currentWord);
+        
         location.reload();
     }
 

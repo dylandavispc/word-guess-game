@@ -1,0 +1,94 @@
+div h2 {
+    color: white;
+}
+h2 {
+    text-align: center;
+    border: 2px solid;
+    font-size: 33px;
+}
+
+body {
+    background-image: url(../images/dark_exa.png)
+}
+
+
+section {
+    height: 850px;
+    margin: 0px 50px;
+}
+
+.flexer {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px;
+    position: relative;
+    height: 100%;
+}
+.winBox {
+    height: 180px;
+    width: 33.33%;
+}
+.gifBox {
+    height: 520px;
+    width: 33.33%;
+    background-color: aqua;
+}
+.loseBox {
+    height: 180px;
+    width: 33.33%;
+}
+.chancesBox {
+    position: absolute;
+    bottom: 360px;
+    left: 0;
+    width: 33.33%;
+    height: 240px;
+}
+.wordBox {
+    position: absolute;
+    bottom: 360px;
+    right: 0;
+    width: 33.33%;
+    height: 240px;
+}
+.keyboardBox {
+    width: 100%;
+    height: 330px;
+    position: absolute;
+    bottom: 0;
+}
+
+#wins {
+    font-size: 50px;
+    text-align: center;
+    color: #ffffff;
+}
+#guesses-left {
+    font-size: 50px;
+    text-align: center;
+    color: #ffffff;
+}
+#word-guess {
+    font-size: 40px;
+    text-align: center;
+    color: #ffffff;
+}
+#letters-guessed {
+    text-align: center;
+    color: #ffffff;
+}
+
+
+footer {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    position: absolute;
+    bottom: 15px;
+}
