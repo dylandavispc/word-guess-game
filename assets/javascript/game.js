@@ -18,7 +18,7 @@ document.getElementById("guesses-left").innerHTML = guessesLeft;
 document.getElementById("gifs").src = 'assets/images/imgProfile.jpg'
 
 document.getElementById("success").style.visibility='hidden' ;
-// document.getElementById("failure").style.visibility='hidden' ;
+document.getElementById("failure").style.visibility='hidden' ;
 
 // This variable will count the number of times we won
 var wins = 0;
@@ -128,16 +128,13 @@ document.onkeyup = function (event) {
 
 
     if (guessesLeft == 0) {
+        document.getElementById("failure").style.visibility='visible' ;
         var phrases = ['Yup! Onto the next one!', 'Leggo!', 'You like the Air Jordan of Hangman!', 'Dont hurt em!', 'Turn up!',
         'Go and brush ya shoulders off!', 'In the zone!']
         var nextRound = phrases[Math.floor(Math.random() * phrases.length)];
+
+        // Add to the losses total
         
-        // alert(nextRound);
-
-
-
-        // Add to the win total
-        document.getElementById("losses").style.visibility='visible' ;
         document.getElementById("gifs").src = 'assets/images/sexymodeling.jpg'
         losses++;
         document.getElementById("losses").innerHTML = losses;
@@ -151,11 +148,6 @@ document.onkeyup = function (event) {
         var phrases = ['Yup! Onto the next one!', 'Leggo!', 'You like the Air Jordan of Hangman!', 'Dont hurt em!', 'Turn up!',
         'Go and brush ya shoulders off!', 'In the zone!']
         var nextRound = phrases[Math.floor(Math.random() * phrases.length)];
-        
-        // alert(nextRound);
-
-
-       
 
         // Add to the win total
         document.getElementById("success").style.visibility='visible' ;
@@ -165,6 +157,9 @@ document.onkeyup = function (event) {
     }
 }
 
+
+//BUTTONS=============================================================================
+//BUTTON TO RESET IF SUCCESS
 document.getElementById("next-round").onclick = function(){
      // reset guesses left
      guessesLeft = 6;
@@ -182,7 +177,10 @@ document.getElementById("next-round").onclick = function(){
      }
      document.getElementById("word-guess").innerHTML = progressWord.join(" ");
      document.getElementById("gifs").src = 'assets/images/imgProfile.jpg'
+     document.getElementById("success").style.visibility='hidden' ;
 };
+
+//BUTTON TO RESET IF FAILURE
 document.getElementById("next-round1").onclick = function(){
     // reset guesses left
     guessesLeft = 6;
@@ -200,6 +198,7 @@ document.getElementById("next-round1").onclick = function(){
     }
     document.getElementById("word-guess").innerHTML = progressWord.join(" ");
     document.getElementById("gifs").src = 'assets/images/imgProfile.jpg'
+    document.getElementById("failure").style.visibility='hidden' ;
 };
 
 
