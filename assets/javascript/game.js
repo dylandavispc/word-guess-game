@@ -11,11 +11,29 @@ var currentWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
 
 // This variable holds the number of guesses left
 var guessesLeft = 6;
+let gifCount = 1;
 document.getElementById("guesses-left").innerHTML = guessesLeft;
+document.getElementById("gifs").innerHTML = gifCount; //TESING------------
+
+//Setting IMG Array
+let gifArray = new Array();
+
+gifArray [0] = new Image();
+gifArray [0].src = '../images/imgProfile.jpg'
+
+gifArray [1] = new Image();
+gifArray [1].src = ''
+
+gifArray [2] = new Image();
+gifArray [2].src = ''
+
+gifArray [3] = new Image();
+gifArray [3].src = ''
 
 // This variable will count the number of times we won
 var wins = 0;
 var losses = 0;
+
 document.getElementById("wins").innerHTML = wins;
 document.getElementById("losses").innerHTML = losses;
 
@@ -71,7 +89,7 @@ document.onkeyup = function (event) {
     console.log("You have typed a letter: ".concat(letter));
 
     var positions = letterInWord(lettersGuessed);
-
+    
 
     // This will alert correct and compare the letter guessed with the current word
     if (positions.length) {
@@ -86,6 +104,15 @@ document.onkeyup = function (event) {
     } else {
         // alert("WRONG!");
         document.getElementById("letters-guessed").innerHTML += lettersGuessed + " ";
+
+        //Changes gifCount to next gif every two chances used.
+
+        if (guessesLeft > 5) {gifCount = 1}
+        else if (guessesLeft > 3) {gifCount = 2}
+        else if (guessesLeft >1) {gifCount = 3}
+        else {gifCount = 4}
+        
+        document.getElementById("gifs").innerHTML = gifCount; //TESTING---------
 
         // subtract a point from guesses left
         guessesLeft--;
