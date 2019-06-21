@@ -13,22 +13,12 @@ var currentWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
 var guessesLeft = 6;
 let gifCount = 1;
 document.getElementById("guesses-left").innerHTML = guessesLeft;
-document.getElementById("gifs").innerHTML = gifCount; //TESING------------
+// document.getElementById("gifs").innerHTML = gifCount; //TESING------------
 
 //Setting IMG Array
-let gifArray = new Array();
+document.getElementById("gifs").src = 'assets/images/imgProfile.jpg'
 
-gifArray [0] = new Image();
-gifArray [0].src = '../images/imgProfile.jpg'
 
-gifArray [1] = new Image();
-gifArray [1].src = ''
-
-gifArray [2] = new Image();
-gifArray [2].src = ''
-
-gifArray [3] = new Image();
-gifArray [3].src = ''
 
 // This variable will count the number of times we won
 var wins = 0;
@@ -112,7 +102,12 @@ document.onkeyup = function (event) {
         else if (guessesLeft >1) {gifCount = 3}
         else {gifCount = 4}
         
-        document.getElementById("gifs").innerHTML = gifCount; //TESTING---------
+        // document.getElementById("gifs").innerHTML = gifCount; //TESTING---------
+
+        if (gifCount === 1) {document.getElementById("gifs").src = 'assets/images/imgProfile.jpg'}
+        else if (gifCount === 2) {document.getElementById("gifs").src = 'assets/images/sexymodeling.jpg'}
+        else if (gifCount === 3) {document.getElementById("gifs").src = 'assets/images/webdesigns.jpg'}
+        else {document.getElementById("gifs").src = 'assets/images/videogames.jpg'}
 
         // subtract a point from guesses left
         guessesLeft--;
