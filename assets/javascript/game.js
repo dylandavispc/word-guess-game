@@ -66,6 +66,7 @@ function lettersToGuess() {
 //Onkeyup Functions====================================================================
 
 document.onkeyup  = function (event) {
+    if (guessesLeft > 0 && lettersToGuess() > 0) {
     var letter = event.key;
     var lettersGuessed = letter.toLocaleUpperCase();
     var i;
@@ -106,7 +107,9 @@ document.onkeyup  = function (event) {
         // subtract a point from guesses left
         guessesLeft--;
         document.getElementById("guesses-left").innerHTML = guessesLeft;
-    }
+    } 
+    
+
 
 
 //Win and Failure Functions=========================================================
@@ -136,6 +139,8 @@ document.onkeyup  = function (event) {
         wins++;
         document.getElementById("wins").innerHTML = wins;
     }
+
+}
 }
 
 
