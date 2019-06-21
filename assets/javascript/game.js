@@ -13,12 +13,12 @@ var currentWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
 var guessesLeft = 6;
 let gifCount = 1;
 document.getElementById("guesses-left").innerHTML = guessesLeft;
-// document.getElementById("gifs").innerHTML = gifCount; //TESING------------
 
 //Setting IMG Array
 document.getElementById("gifs").src = 'assets/images/imgProfile.jpg'
 
-
+document.getElementById("success").style.visibility='hidden' ;
+// document.getElementById("failure").style.visibility='hidden' ;
 
 // This variable will count the number of times we won
 var wins = 0;
@@ -117,13 +117,33 @@ document.onkeyup = function (event) {
     // This code will tell the user the game is over along with a message about
     // their win streak, then it will reset the game while quickly showing
     // what the word was
-    if (guessesLeft === 0) {
+    // if (guessesLeft === 0) {
+    //     losses++;
+    //     document.getElementById("losses").innerHTML = losses;
+    //     document.getElementById("gifs").src = 'assets/images/dark_exa.png'
+    //     // alert("Game Over! You finished with a streak of " + wins + " wins! The word was " + currentWord);
+        
+    //     location.reload();
+    // }
+
+
+    if (guessesLeft == 0) {
+        var phrases = ['Yup! Onto the next one!', 'Leggo!', 'You like the Air Jordan of Hangman!', 'Dont hurt em!', 'Turn up!',
+        'Go and brush ya shoulders off!', 'In the zone!']
+        var nextRound = phrases[Math.floor(Math.random() * phrases.length)];
+        
+        // alert(nextRound);
+
+
+
+        // Add to the win total
+        document.getElementById("losses").style.visibility='visible' ;
+        document.getElementById("gifs").src = 'assets/images/sexymodeling.jpg'
         losses++;
         document.getElementById("losses").innerHTML = losses;
-        alert("Game Over! You finished with a streak of " + wins + " wins! The word was " + currentWord);
-        
-        location.reload();
     }
+
+
 
     // this is the code that alerts you when you've won the game, then it will reset
     // the current word to begin another round
@@ -131,29 +151,55 @@ document.onkeyup = function (event) {
         var phrases = ['Yup! Onto the next one!', 'Leggo!', 'You like the Air Jordan of Hangman!', 'Dont hurt em!', 'Turn up!',
         'Go and brush ya shoulders off!', 'In the zone!']
         var nextRound = phrases[Math.floor(Math.random() * phrases.length)];
-        alert(nextRound);
+        
+        // alert(nextRound);
 
 
-        // reset guesses left
-        guessesLeft = 6;
-        document.getElementById("guesses-left").innerHTML = guessesLeft;
-
-        // reset letters guessed
-        document.getElementById("letters-guessed").innerHTML = resetLettersGuessed;
-
-        // This code generates a new word to guess and then pushes out the blanks again
-        currentWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
-
-        progressWord = [];
-        for (i = 0; i < currentWord.length; i++) {
-            progressWord.push("__");
-        }
-        document.getElementById("word-guess").innerHTML = progressWord.join(" ");
+       
 
         // Add to the win total
+        document.getElementById("success").style.visibility='visible' ;
+        document.getElementById("gifs").src = 'assets/images/sexymodeling.jpg'
         wins++;
         document.getElementById("wins").innerHTML = wins;
     }
 }
+
+document.getElementById("next-round").onclick = function(){
+     // reset guesses left
+     guessesLeft = 6;
+     document.getElementById("guesses-left").innerHTML = guessesLeft;
+
+     // reset letters guessed
+     document.getElementById("letters-guessed").innerHTML = resetLettersGuessed;
+
+     // This code generates a new word to guess and then pushes out the blanks again
+     currentWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
+
+     progressWord = [];
+     for (i = 0; i < currentWord.length; i++) {
+         progressWord.push("__");
+     }
+     document.getElementById("word-guess").innerHTML = progressWord.join(" ");
+     document.getElementById("gifs").src = 'assets/images/imgProfile.jpg'
+};
+document.getElementById("next-round1").onclick = function(){
+    // reset guesses left
+    guessesLeft = 6;
+    document.getElementById("guesses-left").innerHTML = guessesLeft;
+
+    // reset letters guessed
+    document.getElementById("letters-guessed").innerHTML = resetLettersGuessed;
+
+    // This code generates a new word to guess and then pushes out the blanks again
+    currentWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
+
+    progressWord = [];
+    for (i = 0; i < currentWord.length; i++) {
+        progressWord.push("__");
+    }
+    document.getElementById("word-guess").innerHTML = progressWord.join(" ");
+    document.getElementById("gifs").src = 'assets/images/imgProfile.jpg'
+};
 
 
