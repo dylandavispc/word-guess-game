@@ -1,4 +1,4 @@
-//Variables
+//Initialization
 //================================================================
 const words = [
     "banjo", "kayak", "phlegm", "sphinx", "rogue", "rhythm", 
@@ -8,39 +8,31 @@ const words = [
 ];
 
 var currentWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
-
-// This variable holds the number of guesses left
 var guessesLeft = 6;
 let gifCount = 1;
 document.getElementById("guesses-left").innerHTML = guessesLeft;
 
-//Setting IMG Array
+//Sets initail img & hides game status pop-ups
 document.getElementById("gifs").src = 'assets/images/imgProfile.jpg'
-
 document.getElementById("success").style.visibility='hidden' ;
 document.getElementById("failure").style.visibility='hidden' ;
 
-// This variable will count the number of times we won
+// Win / Loss Variables & Displays
 var wins = 0;
 var losses = 0;
 
 document.getElementById("wins").innerHTML = wins;
 document.getElementById("losses").innerHTML = losses;
 
+
+//Word to be guessed==================================================================
 var resetLettersGuessed = ""
-
-// This is an empty array that we will push our blanks to
 var progressWord = [];
-
-// This is an array that we will push the letters from the current word to
-// for comparison of whether the player's guess is correct or not
 var mysteryWord = [];
 var i;
 
-console.log("Current word is: " + currentWord);
 
-// This is the code that will push out blank spaces for the letters of the current
-// word so the player can see the word and begin to guess letters
+
 for (i = 0; i < currentWord.length; i++) {
     progressWord.push("__");
 }
@@ -69,9 +61,11 @@ function lettersToGuess() {
     return toGess;
 }
 
-// These are the key events used to play and to document the letters already used and/or
-// letters in the answers
-document.onkeyup = function (event) {
+
+
+//Onkeyup Functions====================================================================
+
+document.onkeyup  = function (event) {
     var letter = event.key;
     var lettersGuessed = letter.toLocaleUpperCase();
     var i;
@@ -114,19 +108,9 @@ document.onkeyup = function (event) {
         document.getElementById("guesses-left").innerHTML = guessesLeft;
     }
 
-    // This code will tell the user the game is over along with a message about
-    // their win streak, then it will reset the game while quickly showing
-    // what the word was
-    // if (guessesLeft === 0) {
-    //     losses++;
-    //     document.getElementById("losses").innerHTML = losses;
-    //     document.getElementById("gifs").src = 'assets/images/dark_exa.png'
-    //     // alert("Game Over! You finished with a streak of " + wins + " wins! The word was " + currentWord);
-        
-    //     location.reload();
-    // }
 
-
+//Win and Failure Functions=========================================================
+//FAIL
     if (guessesLeft == 0) {
         document.getElementById("failure").style.visibility='visible' ;
         var phrases = ['Yup! Onto the next one!', 'Leggo!', 'You like the Air Jordan of Hangman!', 'Dont hurt em!', 'Turn up!',
@@ -140,10 +124,7 @@ document.onkeyup = function (event) {
         document.getElementById("losses").innerHTML = losses;
     }
 
-
-
-    // this is the code that alerts you when you've won the game, then it will reset
-    // the current word to begin another round
+//WIN
     if (lettersToGuess() == 0) {
         var phrases = ['Yup! Onto the next one!', 'Leggo!', 'You like the Air Jordan of Hangman!', 'Dont hurt em!', 'Turn up!',
         'Go and brush ya shoulders off!', 'In the zone!']
@@ -201,4 +182,30 @@ document.getElementById("next-round1").onclick = function(){
     document.getElementById("failure").style.visibility='hidden' ;
 };
 
+(function() {
+    'use strict';
+    var i,c;
+ function init(){ 
+    i=document.getElementById('keyboard').getElementsByTagName('input');
+ for(c=0;c<i.length;c++) {
+ if(i[c].type==='button') {
+    i[c].addEventListener('onclick',makeClickHandler(c));
+    }
+   }
+ 
+ document.getElementById('clear').onclick=function() {
+    document.getElementById('text').value='';
+   }
+  }
+ 
+ function makeClickHandler(c) {
+    i[c].onclick=function() {
+    document.getElementById('text').value+=this.value.toLowerCase();
+   };
+  }
+ 
+    window.addEventListener?
+    window.addEventListener('load',init,false):
+    window.attachEvent('onload',init);
+ })();
 
