@@ -17,6 +17,10 @@ document.getElementById("gifs").src = 'assets/images/imgProfile.jpg'
 document.getElementById("success").style.visibility='hidden' ;
 document.getElementById("failure").style.visibility='hidden' ;
 
+// var loops = {pics: [img1, img2, img3],
+//         sounds: [4, 3] 
+// }
+
 // Win / Loss Variables & Displays
 var wins = 0;
 var losses = 0;
